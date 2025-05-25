@@ -43,11 +43,15 @@ const FlashcardReview: React.FC<FlashcardReviewProps> = ({ onComplete }) => {
     setIsFlipped(!isFlipped);
   };
 
-  const handleSwipe = async (remembered: boolean) => {
-    if (!cards[currentIndex]) return;
+  const handleResponse = async (remembered: boolean) => {
+    const currentCard = cards[currentIndex];
+    if (!currentCard?.id) {
+      console.error('Card ID is undefined');
+      return;
+    }
 
     try {
-      await updateFlashcardReview(cards[currentIndex].id, remembered);
+      await updateFlashcardReview(currentCard.id, remembered);
       
       if (currentIndex < cards.length - 1) {
         setCurrentIndex(prev => prev + 1);
@@ -55,9 +59,9 @@ const FlashcardReview: React.FC<FlashcardReviewProps> = ({ onComplete }) => {
       } else {
         onComplete();
       }
-    } catch (err) {
+    } catch (error) {
+      console.error('Error updating flashcard:', error);
       setError('Failed to update card. Please try again.');
-      console.error('Error updating card:', err);
     }
   };
 
@@ -173,7 +177,7 @@ const FlashcardReview: React.FC<FlashcardReviewProps> = ({ onComplete }) => {
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        handleSwipe(false);
+                        handleResponse(false);
                       }}
                       className="btn btn-secondary hover:scale-105 transition-transform"
                     >
@@ -184,7 +188,7 @@ const FlashcardReview: React.FC<FlashcardReviewProps> = ({ onComplete }) => {
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        handleSwipe(true);
+                        handleResponse(true);
                       }}
                       className="btn btn-primary hover:scale-105 transition-transform"
                     >

@@ -35,7 +35,8 @@ class FlashcardDatabase extends Dexie {
   }
 
   async addFlashcard(flashcard: Omit<Flashcard, 'id'>): Promise<number> {
-    return this.flashcards.add(flashcard);
+    const id = await this.flashcards.add(flashcard);
+    return Number(id);
   }
 
   async updateFlashcardReview(id: number, remembered: boolean): Promise<void> {
@@ -95,7 +96,8 @@ export const getAllFlashcards = async (): Promise<Flashcard[]> => {
 };
 
 export const addFlashcard = async (flashcard: Omit<Flashcard, 'id'>): Promise<number> => {
-  return await db.flashcards.add(flashcard);
+  const id = await db.flashcards.add(flashcard);
+  return Number(id);
 };
 
 export const updateFlashcardReview = async (id: number, remembered: boolean): Promise<void> => {

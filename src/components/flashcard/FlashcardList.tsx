@@ -115,7 +115,7 @@ const FlashcardList: React.FC = () => {
         return (
           <div
             key={card.id}
-            className={`card hover-lift ${isDue ? 'ring-2 ring-primary' : ''}`}
+            className={`card hover-lift ${isDue ? 'ring-2 ring-primary' : ''} overflow-hidden`}
           >
             {card.image && (
               <div className="relative w-full h-48">
@@ -126,55 +126,55 @@ const FlashcardList: React.FC = () => {
                 />
               </div>
             )}
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+            <div className="p-4 flex flex-col h-full">
+              <div className="flex items-start justify-between mb-2 gap-2">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white break-words flex-1 min-w-0">
                   {card.front}
                 </h3>
                 {isDue && (
-                  <span className="text-xs bg-primary text-white px-2 py-1 rounded">
+                  <span className="text-xs bg-primary text-white px-2 py-1 rounded flex-shrink-0 whitespace-nowrap">
                     Due for Review
                   </span>
                 )}
               </div>
-              <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+              <p className="text-gray-600 dark:text-gray-400 mb-4 break-words">
                 {card.back}
               </p>
               
               {/* Current Status */}
               <div className="mb-3 p-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
                 <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-                  <FaCalendarAlt className="text-primary" />
-                  <span>Next Review: {new Date(card.nextReview).toLocaleDateString()}</span>
+                  <FaCalendarAlt className="text-primary flex-shrink-0" />
+                  <span className="break-words">Next Review: {new Date(card.nextReview).toLocaleDateString()}</span>
                 </div>
               </div>
 
               {/* Next Review Schedule */}
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-2 text-sm">
-                  <FaCheckCircle className="text-green-500" />
-                  <span className="text-gray-600 dark:text-gray-300">
+                  <FaCheckCircle className="text-green-500 flex-shrink-0" />
+                  <span className="text-gray-600 dark:text-gray-300 break-words">
                     If Mastered: {formatInterval(intervals.ifMastered)}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <FaTimesCircle className="text-red-500" />
-                  <span className="text-gray-600 dark:text-gray-300">
+                  <FaTimesCircle className="text-red-500 flex-shrink-0" />
+                  <span className="text-gray-600 dark:text-gray-300 break-words">
                     If Not Learned: {formatInterval(intervals.ifNotLearned)}
                   </span>
                 </div>
               </div>
 
               {/* Card Stats */}
-              <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 mt-auto">
                 <div className="flex items-center gap-2">
-                  <FaClock className="text-primary" />
+                  <FaClock className="text-primary flex-shrink-0" />
                   <span>Repetitions: {card.repetitions}</span>
                 </div>
                 <button
                   onClick={() => card.id && handleDelete(card.id)}
                   disabled={deletingId === card.id}
-                  className="text-red-500 hover:text-red-600 transition-colors"
+                  className="text-red-500 hover:text-red-600 transition-colors flex-shrink-0"
                 >
                   {deletingId === card.id ? (
                     <FaSpinner className="animate-spin" />

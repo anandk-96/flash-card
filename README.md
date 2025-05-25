@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flashcard App
+
+A modern, responsive flashcard application built with Next.js and IndexedDB for efficient spaced repetition learning.
+
+## Features
+
+- 📱 **Responsive Design**: Works seamlessly on both desktop and mobile devices
+- 🎯 **Spaced Repetition**: Implements a Fibonacci-based spaced repetition system
+- 💾 **Offline Support**: Uses IndexedDB for local storage
+- 🌙 **Dark Mode**: Built-in dark mode support
+- 📊 **Progress Tracking**: Monitor your learning progress with detailed statistics
+- 🔄 **Review System**: Smart review scheduling based on your performance
+- 🖼️ **Image Support**: Add images to your flashcards (coming soon)
+
+## Tech Stack
+
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: IndexedDB (via Dexie.js)
+- **Icons**: React Icons
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/flashcard-app.git
+   cd flashcard-app
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+1. **Add Cards**: Create new flashcards with front and back content
+2. **Review**: Review cards based on the spaced repetition schedule
+3. **Manage**: View and manage all your flashcards
+4. **Track Progress**: Monitor your learning progress and statistics
 
-To learn more about Next.js, take a look at the following resources:
+## Spaced Repetition System
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The app uses a Fibonacci-based spaced repetition system:
+- Cards are scheduled for review based on your performance
+- Intervals increase as you master the content
+- Failed cards are reset to the beginning of the sequence
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
