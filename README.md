@@ -2,6 +2,15 @@
 
 A modern, responsive flashcard application built with Next.js and IndexedDB for efficient spaced repetition learning.
 
+<img width="485" alt="Screenshot 2025-05-25 at 4 36 50 PM" src="https://github.com/user-attachments/assets/c8292d60-edfb-4d87-a336-45f15af8bc36" />
+<img width="485" alt="Screenshot 2025-05-25 at 4 37 24 PM" src="https://github.com/user-attachments/assets/fd824a24-5e5b-4742-8f62-3f85a7c7d768" />
+<img width="485" alt="Screenshot 2025-05-25 at 4 37 13 PM" src="https://github.com/user-attachments/assets/fdc9081c-1aaa-4b23-a4c9-6eb2ff41b797" />
+
+<img width="485" alt="Screenshot 2025-05-25 at 4 37 03 PM" src="https://github.com/user-attachments/assets/8742cda5-84ae-473e-9e6d-a0f8f107dce2" />
+<img width="485" alt="Screenshot 2025-05-25 at 4 37 44 PM" src="https://github.com/user-attachments/assets/ca49dc16-3b6a-46ed-99ad-416ace612bf0" />
+<img width="485" alt="Screenshot 2025-05-25 at 4 42 02 PM" src="https://github.com/user-attachments/assets/46985b71-f517-4cab-ac6f-a40d1e0654ea" />
+
+
 ## Features
 
 - 📱 **Responsive Design**: Works seamlessly on both desktop and mobile devices
