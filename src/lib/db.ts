@@ -22,6 +22,22 @@ class FlashcardDatabase extends Dexie {
     this.version(1).stores({
       flashcards: '++id, nextReview'
     });
+    this.fixExistingCards();
+  }
+
+  private async fixExistingCards() {
+    try {
+      const allCards = await this.flashcards.toArray();
+      for (const card of allCards) {
+        const nextReview = new Date(card.nextReview);
+        nextReview.setHours(0, 0, 0, 0);
+        if (nextReview.getTime() !== new Date(card.nextReview).getTime()) {
+          await this.flashcards.update(card.id!, { nextReview });
+        }
+      }
+    } catch (error) {
+      console.error('Error fixing existing cards:', error);
+    }
   }
 
   async getFlashcardsForReview(): Promise<Flashcard[]> {
@@ -62,6 +78,7 @@ class FlashcardDatabase extends Dexie {
     }
 
     const nextReview = new Date();
+    nextReview.setHours(0, 0, 0, 0);
     nextReview.setDate(nextReview.getDate() + newInterval);
 
     await this.flashcards.update(id, {
@@ -120,6 +137,7 @@ export const updateFlashcardReview = async (id: number, remembered: boolean): Pr
   }
 
   const nextReview = new Date();
+  nextReview.setHours(0, 0, 0, 0);
   nextReview.setDate(nextReview.getDate() + newInterval);
 
   await db.flashcards.update(id, {

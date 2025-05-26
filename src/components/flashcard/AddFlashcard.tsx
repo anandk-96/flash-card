@@ -29,7 +29,11 @@ const AddFlashcard: React.FC = () => {
         front: front.trim(),
         back: back.trim(),
         // image,
-        nextReview: new Date(),
+        nextReview: (() => {
+          const date = new Date();
+          date.setHours(0, 0, 0, 0);
+          return date;
+        })(),
         interval: 1,
         easeFactor: 2.5,
         repetitions: 0
